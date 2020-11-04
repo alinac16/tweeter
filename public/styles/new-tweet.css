@@ -1,0 +1,78 @@
+form {
+  display: flex;
+  color: #545149;
+  font-size: 24px;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-tweet {
+  width: 100%;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.form-control {
+  display: flex;
+  line-height: 2em;
+  margin: 0;
+  width: 100%;
+  font-size: 20px;
+  border: 1px solid #f4f1ec;
+  border-bottom: 3px #545149 solid;
+  background-color: #f4f1ec;
+  font-weight: 500;
+}
+
+.form-control:focus {
+  outline: none;
+}
+
+.control-label {
+  display: block;
+  position: absolute;
+  opacity: 0;
+  bottom: 2rem;
+  color: #5d5d5d;
+  transition: 0.2s ease-in-out transform;
+  font-size: 15px;
+}
+.form-control:placeholder-shown + .control-label {
+  visibility: hidden;
+  z-index: -1;
+  transition: 0.2s ease-in-out;
+}
+.form-control:not(:placeholder-shown) + .control-label,
+.form-control:focus:not(:placeholder-shown) + .control-label {
+  visibility: visible;
+  z-index: 1;
+  opacity: 1;
+  transform: translateY(-10px);
+  transition: 0.2s ease-in-out transform;
+}
+
+output[name="counter"] {
+  font-family: "Bungee", cursive;
+}
+
+button[type="submit"] {
+  background-color: #4056a1;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  font-family: "Bungee", cursive;
+}
+
+.submit-wrapper {
+  display: flex;
+  padding-top: 10px;
+  justify-content: space-between;
+}

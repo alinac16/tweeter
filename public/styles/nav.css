@@ -1,0 +1,29 @@
+nav {
+  display: flex;
+  background-color: #4056a1;
+  color: #ffffff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.nav_container {
+  font-family: "Bungee", cursive;
+  padding: 1.5em;
+  font-size: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.write-tweet {
+  font-size: 20px;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+/* .box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+ } */
