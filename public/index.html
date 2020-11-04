@@ -14,8 +14,10 @@
       href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,700;1,300;1,700&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -29,19 +31,16 @@
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
-    <script
-      type="text/javascript"
-      src="/scripts/composer-char-counter.js"
-    ></script>
+    <script type="text/javascript" src="/scripts/compose-tweet.js"></script>
   </head>
 
   <body>
     <!-- Top nav bar (fixed) -->
     <nav>
-        <div class="nav_container">
-          <div>tweeter</div>
-          <div class="write-tweet">write a new tweet</div>
-        </div>
+      <div class="nav_container">
+        <div>tweeter</div>
+        <div class="write-tweet">write a new tweet</div>
+      </div>
     </nav>
     <!-- Page-specific (main) content here -->
     <header class="nav_header">
@@ -55,48 +54,29 @@
     </header>
 
     <main class="container">
-      <section class="new-tweet">
-        <h2>Compose Tweet</h2>
-        <form method="POST" action="/tweets">
-          <div class="input-wrapper">
-            <input
-              name="text"
-              id="tweet-text"
-              class="form-control"
-              placeholder="What are you humming about?"
-            ></input>
-            <label for="tweet-text" class="control-label"
-              >What are you humming about?</label
-            >
-          </div>
-        </form>
-        <div class="submit-wrapper">
-          <button type="submit" action="post">Tweet</button>
-          <output name="counter" class="counter" for="tweet-text">140</output>
-        </div>
-      </section>
-      <div class="tweet_container">
+      <section class="new-tweet"></section>
+      <section class="tweet_container">
         <article class="tweet">
           <header>
             <div class="tweet-user">
-              <img src="https://lh3.googleusercontent.com/pw/ACtC-3c4kgdHkRD3xgqCwVsY3ALSXHUTRtlUogajBRQ81iL5BKD_nJ-zuxygSiz6vPXJkbc0OPHRgfmn8kxCa0D9xIMxEGkHX5pMnpt2MZn7ITrVRxE1j4O2PPGzEqJ81lHWXuLWp00oECWzoQNh7nz94MkT=s711-no?authuser=0">
+              <img
+                src="https://lh3.googleusercontent.com/pw/ACtC-3c4kgdHkRD3xgqCwVsY3ALSXHUTRtlUogajBRQ81iL5BKD_nJ-zuxygSiz6vPXJkbc0OPHRgfmn8kxCa0D9xIMxEGkHX5pMnpt2MZn7ITrVRxE1j4O2PPGzEqJ81lHWXuLWp00oECWzoQNh7nz94MkT=s711-no?authuser=0"
+              />
               <h1>Jackson</h1>
             </div>
             <h2>@MrTacksonHK</h2>
           </header>
-              <div class="tweet-body">
-                <p>Hello world!</p>
-              </div>
-              <footer>
-                <p>10 days ago</p>
-                <span>
-                  <i class="material-icons">
-                    favorite
-                  </i>
-                </span>
-              </footer>
+          <div class="tweet-body">
+            <p>Hello world!</p>
+          </div>
+          <footer>
+            <p>10 days ago</p>
+            <span>
+              <i class="material-icons"> favorite </i>
+            </span>
+          </footer>
         </article>
-      </div>
+      </section>
     </main>
   </body>
 </html>

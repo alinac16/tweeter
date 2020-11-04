@@ -7,6 +7,10 @@ nav {
   width: 100%;
 }
 
+.write-tweet:hover {
+  cursor: pointer;
+}
+
 .nav_container {
   font-family: "Bungee", cursive;
   padding: 1.5em;

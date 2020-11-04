@@ -24,6 +24,7 @@
 .tweet header {
   display: flex;
   justify-content: space-between;
+  align-content: center;
 }
 
 .tweet-user {
@@ -32,7 +33,7 @@
 }
 
 .tweet header h1 {
-  font-size: 1.5em;
+  font-size: 1em;
   color: #545149;
   margin-top: 15px;
   margin: auto;
@@ -40,10 +41,14 @@
 }
 
 .tweet header h2 {
-  font-size: 1em;
-  font-weight: 100;
-  color: #545149;
+  font-size: 0.75em;
+  font-weight: 50;
+  color: #9b9a99;
   margin-right: 10px;
+}
+
+.tweet-body {
+  font-size: 0.9em;
 }
 
 .tweet footer {
@@ -54,7 +59,6 @@
 
 .tweet footer p {
   font-size: 0.7em;
-  margin-left: 15px;
   width: 30%;
   text-align: left;
 }
@@ -67,6 +71,8 @@
 
 .tweet footer span i {
   margin-left: 4px;
+  display: flex;
+  align-items: center;
 }
 .tweet_container:hover {
   box-shadow: 0 8px 6px -6px #545149;
