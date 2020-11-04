@@ -4,10 +4,10 @@
 // 4. append msg content into msg container
 
 $(document).ready(function () {
+  console.log("Ready!!!!!");
   const $input = $(".write-tweet");
+  console.log($input);
 
-  const i = 1;
-  const func = function () {};
   $input.click(function () {
     console.log("IM CLICKED");
     // prepend
@@ -34,6 +34,8 @@ $(document).ready(function () {
             140
           </output>
         </div>`);
+
+    $input.off("click");
 
     $("#tweet-text").on("keyup", function () {
       const remainingChar = 140 - $(this).val().length;
