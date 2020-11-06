@@ -3,6 +3,8 @@
 // 3. create msg content
 // 4. append msg content into msg container
 
+// 1.
+
 $(document).ready(function () {
   console.log("Ready!!!!!");
   const $input = $(".write-tweet");
