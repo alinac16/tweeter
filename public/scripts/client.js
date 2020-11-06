@@ -5,7 +5,7 @@
  */
 
 // Test / driver code (temporary). Eventually will get this from the server.
-[
+const data = [
   {
     user: {
       name: "Newton",
@@ -47,7 +47,7 @@ const createTweetElement = function (tweetData) {
             <p>${tweetData.content.text}</p>
           </div>
           <footer>
-            <p>${getTheCurrentTime(tweetObj.created_at)}</p>
+            <p>${tweetData.created_at}</p>
             <span>
               <i class="material-icons"> favorite </i>
             </span>
@@ -67,6 +67,4 @@ const renderTweets = function (tweets) {
   $("#tweets-container").append($html);
 };
 
-// Test / driver code (temporary)
-console.log($tweet); // to see what it looks like
-$("#tweets-container").append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+renderTweets(data);
