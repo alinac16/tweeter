@@ -1,7 +1,5 @@
-// 1. target msg container
-// 2. create click handler on text
-// 3. create msg content
-// 4. append msg content into msg container
+/* eslint-disable no-undef */
+// fix styling
 
 // 1.
 const maxChar = 140;
@@ -15,28 +13,28 @@ $(document).ready(function () {
     console.log("IM CLICKED");
     // prepend
     $(".new-tweet").append(`
-        <h2>Compose Tweet</h2>
-        <form id="post-tweet" method="POST" action="/tweets">
-          <div class="input-wrapper">
-            <input
-              name="text"
-              id="tweet-text"
-              class="form-control"
-              placeholder="What are you humming about?"
-            ></input>
-            <label for="tweet-text" class="control-label">
-              What are you humming about?
-            </label>
-          </div>
-        </form>
-        <div class="submit-wrapper">
-          <button type="submit" action="post">
-            Tweet
-          </button>
-          <output name="counter" class="counter" for="tweet-text">
-            ${maxChar};
-          </output>
-        </div>`);
+    <h2>Compose Tweet</h2>
+    <form id="post-tweet" method="POST" action="/tweets">
+      <div class="input-wrapper">
+        <input
+          name="text"
+          id="tweet-text"
+          class="form-control"
+          placeholder="What are you humming about?"
+        />
+        <label for="tweet-text" class="control-label">
+          What are you humming about?
+        </label>
+      </div>
+      <div class="submit-wrapper">
+        <button type="submit" action="post">
+        Tweet
+        </button>
+        <output name="counter" class="counter" for="tweet-text">
+        ${maxChar}
+        </output>
+      </div>
+      </form>`);
 
     $input.off("click");
 
@@ -141,13 +139,15 @@ const getCurrentTime = function (date) {
 
 // POSTs a serialized tweet to the /tweets route
 const submitTweet = function (newTweet) {
+  alert("Handler for .submit() called");
+  event.preventDefault();
   $.post("/tweets", newTweet)
-    .done(res => {
-      $("#new-tweet form").trigger("reset");
-      $("#new-tweet .counter").text(MAXCHARS);
-      loadTweets();
+    .then(res => {
+      $("#post-tweet form").trigger("reset");
+      $(".counter").text(maxChar);
+      // loadTweets();
     })
-    .fail(err => {
+    .catch(err => {
       console.error(err);
     });
 };
