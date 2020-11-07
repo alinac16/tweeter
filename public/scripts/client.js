@@ -47,7 +47,7 @@ const createTweetElement = function (tweetData) {
             <p>${tweetData.content.text}</p>
           </div>
           <footer>
-            <p>${tweetData.created_at}</p>
+            <p>${getCurrentTime(tweetData.created_at)}</p>
             <span>
               <i class="material-icons"> favorite </i>
             </span>
@@ -67,4 +67,30 @@ const renderTweets = function (tweets) {
   $("#tweets-container").append($html);
 };
 
-renderTweets(data);
+const getCurrentTime = function (date) {
+  const currentDate = Date.now();
+  const howLongInMinute = (currentDate - date) / 1000 / 60;
+  const howLongInHour = (currentDate - date) / 1000 / 60 / 60;
+  if (howLongInMinute < 1) {
+    return `${Math.floor(howLongInMinute)} second ago`;
+  } else if (howLongInMinute < 60) {
+    return `${Math.floor(howLongInMinute)} minutes ago`;
+  } else if (howLongInHour < 24) {
+    return `${Math.floor(howLongInHour)} hours ago`;
+  } else {
+    `${Math.floor(howLongInHour / 24)} days ago`;
+  }
+};
+
+// POSTs a serialized tweet to the /tweets route
+const submitTweet = function (newTweet) {
+  $.post("/tweets", newTweet)
+    .done(res => {
+      $("#new-tweet form").trigger("reset");
+      $("#new-tweet .counter").text(MAXCHARS);
+      loadTweets();
+    })
+    .fail(err => {
+      console.error(err);
+    });
+};
