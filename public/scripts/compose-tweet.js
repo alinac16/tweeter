@@ -56,9 +56,18 @@ $(document).ready(function () {
     form.submit(event => {
       event.preventDefault();
       const formData = form.serialize();
-      loadTweets().then(res => {
-        renderTweets(res);
-      });
+
+      const tweetLength = formData.split("=")[1].length;
+      if (tweetLength > maxChar) {
+        alert("Message too long!");
+      } else if (tweetLength < 1) {
+        alert("Please write your hummmm!");
+      } else {
+        submitTweet(formData);
+        loadTweets().then(res => {
+          renderTweets(res);
+        });
+      }
     });
   });
 });
@@ -130,13 +139,9 @@ const getCurrentTime = function (date) {
 };
 
 // POSTs a serialized tweet to the /tweets route
-// const submitTweet = function (newTweet) {
-//   $.post("/tweets", newTweet)
-//     .then(res => {
-//       $("#post-tweet form").trigger("reset");
-//       $(".counter").text(maxChar);
-//     })
-//     .catch(err => {
-//       console.error(err);
-//     });
-// };
+const submitTweet = function (newTweet) {
+  return $.post("/tweets", function (newTweet) {
+    console.log(newTweet);
+    return newTweet;
+  });
+};
