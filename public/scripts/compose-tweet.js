@@ -50,6 +50,19 @@ $(document).ready(function () {
         counter.css("color", "black");
       }
     });
+
+    const form = $("#post-tweet");
+
+    form.submit(event => {
+      event.preventDefault();
+      const formData = form.serialize();
+      console.log(formData);
+      renderTweets(data);
+      // submitTweet(formData).then(res => {
+      //   console.log(res);
+      //   renderTweets(data);
+      // });
+    });
   });
 });
 
@@ -113,6 +126,7 @@ const createTweetElement = function (tweetData) {
 
 const renderTweets = function (tweets) {
   //loops through tweets
+  console.log("RENDER");
   const $html = $("<div></div>");
   // calls createTweetElement for each tweet
   tweets.forEach(tweet => {
@@ -126,28 +140,27 @@ const getCurrentTime = function (date) {
   const currentDate = Date.now();
   const howLongInMinute = (currentDate - date) / 1000 / 60;
   const howLongInHour = (currentDate - date) / 1000 / 60 / 60;
+
+  if (howLongInMinute < 60) {
+    return `${Math.floor(howLongInMinute)} minutes ago`;
+  }
   if (howLongInMinute < 1) {
     return `${Math.floor(howLongInMinute)} second ago`;
-  } else if (howLongInMinute < 60) {
-    return `${Math.floor(howLongInMinute)} minutes ago`;
-  } else if (howLongInHour < 24) {
-    return `${Math.floor(howLongInHour)} hours ago`;
-  } else {
-    `${Math.floor(howLongInHour / 24)} days ago`;
   }
+  if (howLongInHour < 24) {
+    return `${Math.floor(howLongInHour)} hours ago`;
+  }
+  return `${Math.floor(howLongInHour / 24)} days ago`;
 };
 
 // POSTs a serialized tweet to the /tweets route
-const submitTweet = function (newTweet) {
-  alert("Handler for .submit() called");
-  event.preventDefault();
-  $.post("/tweets", newTweet)
-    .then(res => {
-      $("#post-tweet form").trigger("reset");
-      $(".counter").text(maxChar);
-      // loadTweets();
-    })
-    .catch(err => {
-      console.error(err);
-    });
-};
+// const submitTweet = function (newTweet) {
+//   $.post("/tweets", newTweet)
+//     .then(res => {
+//       $("#post-tweet form").trigger("reset");
+//       $(".counter").text(maxChar);
+//     })
+//     .catch(err => {
+//       console.error(err);
+//     });
+// };
