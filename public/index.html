@@ -54,6 +54,27 @@
     </header>
     <main class="container">
       <section class="new-tweet"></section>
+      <h2>Compose Tweet</h2>
+      <div class="error-message">
+        <span class="error-text">ERROARRRRR</span>
+      </div>
+      <form id="post-tweet" method="POST" action="/tweets">
+        <div class="input-wrapper">
+          <input
+            name="text"
+            id="tweet-text"
+            class="form-control"
+            placeholder="What are you humming about?"
+          />
+          <label for="tweet-text" class="control-label">
+            What are you humming about?
+          </label>
+        </div>
+        <div class="submit-wrapper">
+          <button type="submit" action="post">Tweet</button>
+          <output name="counter" class="counter" for="tweet-text"> 140 </output>
+        </div>
+      </form>
       <section class="tweet_container">
         <article class="tweet">
           <header>

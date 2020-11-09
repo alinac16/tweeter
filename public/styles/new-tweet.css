@@ -9,10 +9,6 @@ form {
   flex-direction: column;
 }
 
-.new-tweet {
-  /* width: 100%; */
-}
-
 .input-wrapper {
   position: relative;
   width: 100%;
@@ -75,4 +71,17 @@ button[type="submit"] {
   padding-top: 10px;
   justify-content: space-between;
   align-items: baseline;
+}
+
+.error-message {
+  background-color: #fce4e4;
+  border: 1px solid #fcc2c3;
+  float: left;
+  padding: 2.5px 20px;
+  display: none;
+}
+
+.error-text {
+  color: #cc0033;
+  font-size: 13px;
 }

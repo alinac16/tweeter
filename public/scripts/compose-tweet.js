@@ -6,71 +6,70 @@ const maxChar = 140;
 
 $(document).ready(function () {
   console.log("Ready!!!!!");
-  const $input = $(".write-tweet");
-  console.log($input);
+  // const $input = $(".write-tweet");
 
-  $input.click(function () {
-    console.log("IM CLICKED");
-    // prepend
-    $(".new-tweet").append(`
-    <h2>Compose Tweet</h2>
-    <form id="post-tweet" method="POST" action="/tweets">
-      <div class="input-wrapper">
-        <input
-          name="text"
-          id="tweet-text"
-          class="form-control"
-          placeholder="What are you humming about?"
-        />
-        <label for="tweet-text" class="control-label">
-          What are you humming about?
-        </label>
-      </div>
-      <div class="submit-wrapper">
-        <button type="submit" action="post">
-        Tweet
-        </button>
-        <output name="counter" class="counter" for="tweet-text">
-        ${maxChar}
-        </output>
-      </div>
-      </form>`);
+  // $input.click(function () {
+  //   console.log("IM CLICKED");
+  //   // prepend
+  //   $(".new-tweet").append(`
+  //   <h2>Compose Tweet</h2>
+  //   <form id="post-tweet" method="POST" action="/tweets">
+  //     <div class="input-wrapper">
+  //       <input
+  //         name="text"
+  //         id="tweet-text"
+  //         class="form-control"
+  //         placeholder="What are you humming about?"
+  //       />
+  //       <label for="tweet-text" class="control-label">
+  //         What are you humming about?
+  //       </label>
+  //     </div>
+  //     <div class="submit-wrapper">
+  //       <button type="submit" action="post">
+  //       Tweet
+  //       </button>
+  //       <output name="counter" class="counter" for="tweet-text">
+  //       ${maxChar}
+  //       </output>
+  //     </div>
+  //     </form>`);
 
-    $input.off("click");
+  //   $input.off("click");
 
-    $("#tweet-text").on("keyup", function () {
-      const remainingChar = maxChar - $(this).val().length;
-      const counter = $("output.counter");
-      counter.text(remainingChar);
+  $("#tweet-text").on("keyup", function () {
+    const remainingChar = 140 - $(this).val().length;
+    const counter = $("output.counter");
+    counter.text(remainingChar);
 
-      if (remainingChar < 0) {
-        counter.css("color", "red");
-      }
-      if (remainingChar >= 0) {
-        counter.css("color", "black");
-      }
-    });
+    if (remainingChar < 0) {
+      counter.css("color", "red");
+    }
+    if (remainingChar >= 0) {
+      counter.css("color", "black");
+    }
+  });
 
-    const form = $("#post-tweet");
+  const form = $("#post-tweet");
 
-    form.submit(event => {
-      event.preventDefault();
-      const formData = form.serialize();
+  form.submit(event => {
+    event.preventDefault();
+    const formData = form.serialize();
 
-      const tweetLength = formData.split("=")[1].length;
-      if (tweetLength > maxChar) {
-        alert("Message too long!");
-      } else if (tweetLength < 1) {
-        alert("Please write your hummmm!");
-      } else {
-        submitTweet(formData);
+    const tweetLength = formData.split("=")[1].length;
+    if (tweetLength > 140) {
+      alert("Message too long!");
+    } else if (tweetLength < 1) {
+      alert("Please write your hummmm!");
+    } else {
+      submitTweet(formData).then(res => {
         loadTweets().then(res => {
           renderTweets(res);
         });
-      }
-    });
+      });
+    }
   });
-});
+})c;
 
 const loadTweets = function () {
   return $.get("/tweets", function (data) {
@@ -97,7 +96,7 @@ const createTweetElement = function (tweetData) {
               <h2>${tweetData.user.handle}</h2>
               </header>
               <div class="tweet-body">
-              <p>${tweetData.content.text}</p>
+              <p>${escape(tweetData.content.text)}</p>
               </div>
               <footer>
             <p>${getCurrentTime(tweetData.created_at)}</p>
@@ -107,6 +106,12 @@ const createTweetElement = function (tweetData) {
             </footer>`;
   $tweet = $tweet.append(html);
   return $tweet;
+};
+
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
 };
 
 const renderTweets = function (tweets) {
@@ -140,8 +145,7 @@ const getCurrentTime = function (date) {
 
 // POSTs a serialized tweet to the /tweets route
 const submitTweet = function (newTweet) {
-  return $.post("/tweets", function (newTweet) {
-    console.log(newTweet);
+  return $.post("/tweets", newTweet, function (newTweet) {
     return newTweet;
   });
 };
