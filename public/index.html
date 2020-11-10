@@ -54,9 +54,9 @@
     </header>
     <main class="container">
       <section class="new-tweet"></section>
-      <h2>Compose Tweet</h2>
-      <div class="error-message">
-        <span class="error-text">ERROARRRRR</span>
+      <h3 class="new-tweet__title">Compose Tweet</h3>
+      <div class="error-wrapper">
+        <div class="error-message"></div>
       </div>
       <form id="post-tweet" method="POST" action="/tweets">
         <div class="input-wrapper">
@@ -97,6 +97,7 @@
           </footer>
         </article>
       </section>
+      <button id="topBtn" title="Go to top">Top</button>
     </main>
   </body>
 </html>

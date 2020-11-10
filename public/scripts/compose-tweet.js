@@ -6,36 +6,21 @@ const maxChar = 140;
 
 $(document).ready(function () {
   console.log("Ready!!!!!");
-  // const $input = $(".write-tweet");
+  $(".write-tweet").click(function () {
+    $("#tweet-text").focus();
+  });
 
-  // $input.click(function () {
-  //   console.log("IM CLICKED");
-  //   // prepend
-  //   $(".new-tweet").append(`
-  //   <h2>Compose Tweet</h2>
-  //   <form id="post-tweet" method="POST" action="/tweets">
-  //     <div class="input-wrapper">
-  //       <input
-  //         name="text"
-  //         id="tweet-text"
-  //         class="form-control"
-  //         placeholder="What are you humming about?"
-  //       />
-  //       <label for="tweet-text" class="control-label">
-  //         What are you humming about?
-  //       </label>
-  //     </div>
-  //     <div class="submit-wrapper">
-  //       <button type="submit" action="post">
-  //       Tweet
-  //       </button>
-  //       <output name="counter" class="counter" for="tweet-text">
-  //       ${maxChar}
-  //       </output>
-  //     </div>
-  //     </form>`);
+  $("#topBtn").click(function () {
+    $("html").animate({ scrollTop: 0 }, "slow");
+  });
 
-  //   $input.off("click");
+  $(window).scroll(function () {
+    if ($(this).scrollTop()) {
+      $("#topBtn:hidden").stop(true, true).fadeIn();
+    } else {
+      $("#topBtn").stop(true, true).fadeOut();
+    }
+  });
 
   $("#tweet-text").on("keyup", function () {
     const remainingChar = 140 - $(this).val().length;
@@ -57,10 +42,22 @@ $(document).ready(function () {
     const formData = form.serialize();
 
     const tweetLength = formData.split("=")[1].length;
+    console.log(tweetLength);
     if (tweetLength > 140) {
-      alert("Message too long!");
+      $(".error-message").html(
+        `<span class="error-text">You're humming too long</span>`
+      );
+      // hide error message after 3 sec
+      setTimeout(function () {
+        $(".error-message").html(``);
+      }, 2500);
     } else if (tweetLength < 1) {
-      alert("Please write your hummmm!");
+      $(".error-message").html(
+        `<span class="error-text">Please write your hummmm</span>`
+      );
+      setTimeout(function () {
+        $(".error-message").html(``);
+      }, 2500);
     } else {
       submitTweet(formData).then(res => {
         loadTweets().then(res => {
@@ -69,7 +66,7 @@ $(document).ready(function () {
       });
     }
   });
-})c;
+});
 
 const loadTweets = function () {
   return $.get("/tweets", function (data) {

@@ -4,6 +4,10 @@ form {
   font-family: "Source Sans Pro", sans-serif;
 }
 
+.new-tweet__title {
+  margin-bottom: 0;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -33,7 +37,6 @@ form {
 .control-label {
   display: block;
   position: absolute;
-  opacity: 0;
   bottom: 2rem;
   color: #5d5d5d;
   transition: 0.2s ease-in-out transform;
@@ -78,10 +81,18 @@ button[type="submit"] {
   border: 1px solid #fcc2c3;
   float: left;
   padding: 2.5px 20px;
-  display: none;
+  width: 100%;
 }
 
 .error-text {
   color: #cc0033;
   font-size: 13px;
+}
+
+.error-message:empty {
+  display: none;
+}
+
+.error-wrapper {
+  height: 50px;
 }
