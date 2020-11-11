@@ -6,6 +6,11 @@ const maxChar = 140;
 
 $(document).ready(function () {
   console.log("Ready!!!!!");
+
+  loadTweets().then(res => {
+    renderTweets(res);
+  });
+
   $(".write-tweet").click(function () {
     $("#tweet-text").focus();
   });
@@ -60,9 +65,9 @@ $(document).ready(function () {
       }, 2500);
     } else {
       submitTweet(formData).then(res => {
-        loadTweets().then(res => {
-          renderTweets(res);
-        });
+        console.log("submit tweet", res);
+        $(".tweet_container").empty();
+        renderTweets(res);
       });
     }
   });
@@ -142,7 +147,7 @@ const getCurrentTime = function (date) {
 
 // POSTs a serialized tweet to the /tweets route
 const submitTweet = function (newTweet) {
-  return $.post("/tweets", newTweet, function (newTweet) {
-    return newTweet;
+  return $.post("/tweets", newTweet, function (allTweets) {
+    return allTweets;
   });
 };
