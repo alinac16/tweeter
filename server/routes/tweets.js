@@ -37,7 +37,8 @@ module.exports = function (DataHelpers) {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
-        res.status(200).redirect("/tweets");
+        // res.status(200).redirect("/tweets");
+        res.json(tweet);
       }
     });
   });

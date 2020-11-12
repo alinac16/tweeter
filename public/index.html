@@ -43,61 +43,62 @@
       </div>
     </nav>
     <!-- Page-specific (main) content here -->
-    <header class="nav_header">
-      <div>
-        <img src="/images/profile-hex.png" />
-      </div>
-      <br />
-      <div>
-        <h2>Your Name</h2>
-      </div>
-    </header>
-    <main class="container">
-      <section class="new-tweet"></section>
-      <h3 class="new-tweet__title">Compose Tweet</h3>
-      <div class="error-wrapper">
-        <div class="error-message"></div>
-      </div>
-      <form id="post-tweet" method="POST" action="/tweets">
-        <div class="input-wrapper">
-          <input
-            name="text"
-            id="tweet-text"
-            class="form-control"
-            placeholder="What are you humming about?"
-          />
-          <label for="tweet-text" class="control-label">
-            What are you humming about?
-          </label>
+    <div class="body-wrapper">
+      <header class="nav_header">
+        <div>
+          <img src="/images/profile-hex.png" />
         </div>
-        <div class="submit-wrapper">
-          <button type="submit" action="post">Tweet</button>
-          <output name="counter" class="counter" for="tweet-text"> 140 </output>
+        <br />
+        <div>
+          <h2>Your Name</h2>
         </div>
-      </form>
-      <section class="tweet_container">
-        <article class="tweet">
-          <header>
-            <div class="tweet-user">
-              <img
-                src="https://lh3.googleusercontent.com/pw/ACtC-3c4kgdHkRD3xgqCwVsY3ALSXHUTRtlUogajBRQ81iL5BKD_nJ-zuxygSiz6vPXJkbc0OPHRgfmn8kxCa0D9xIMxEGkHX5pMnpt2MZn7ITrVRxE1j4O2PPGzEqJ81lHWXuLWp00oECWzoQNh7nz94MkT=s711-no?authuser=0"
-              />
-              <h1>Jackson</h1>
-            </div>
-            <h2>@MrTacksonHK</h2>
-          </header>
-          <div class="tweet-body">
-            <p>Hello world!</p>
+      </header>
+      <main class="container">
+        <section class="new-tweet"></section>
+        <div class="error-wrapper">
+          <div class="error-message"></div>
+        </div>
+        <form id="post-tweet" method="POST" action="/tweets">
+          <div class="input-wrapper">
+            <input
+              name="text"
+              id="tweet-text"
+              class="form-control"
+              placeholder="What are you humming about?"
+            />
+            <label for="tweet-text" class="control-label">
+              What are you humming about?
+            </label>
           </div>
-          <footer>
-            <p>10 days ago</p>
-            <span>
-              <i class="material-icons"> favorite </i>
-            </span>
-          </footer>
-        </article>
-      </section>
-      <button id="topBtn" title="Go to top">Top</button>
-    </main>
-  </body>
+          <div class="submit-wrapper">
+            <button type="submit" action="post">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text"> 140 </output>
+          </div>
+        </form>
+        <section class="tweet_container">
+          <article class="tweet">
+            <header>
+              <div class="tweet-user">
+                <img
+                  src="https://lh3.googleusercontent.com/XRlZQgMVarJZenXIx8jN4EIF-OYin8fmSCUJcxRr2Vr0m-hMXs3PJFpHrzAJ4ZOMBdleNnacLEWUwaQXhJba9FUcMqeO5D_dgseiUb25KR1a2MNaXPBUBIgbKH5Hw20T_0huZbwZMbut0h0NUGsscwMPCU3WGYPDqnj-yXA4U-G-tk7iFi_I98G9r03ugQJO9e40x4r2jxpV2e2dT7FwDZv2zLmxyjVgmrc3r1aNI3dwDiwdQ3S1NxX187jdKzIciQhwAbz5JDnKQbn4QjBp6s_m9h21kRH6p7WaOTkDioAKch--W1UuySyDf6KNxd-d0gUrpt_mf7kLUQP-pw5VW5tFCsXKseF1twLkB5YPTAI5mQlWjN-w692JUAUe13cwPSkO9lykXWZbAAsqCsO-oHQVChBU8BcqOsYAK-SfzIn9HNLndRsQjNzApmqy3_8CUwr46TZHloTjawLyZko4sJu2ecrhhfA5jttA4Cn3kpXGJupyy1EOhMDw_VTJrnssRddTb4f-7EXDcHiXAqQZDfh7EENKXTsbsQveH6c9vk20rIdJVkBle1gNwMRQxGiyIpuoMmJgDWg8KACUFecgMJI0taMKmkGR31diYNOkBNtTiKerdnILDqnb3c6xfU1W8NKu9YERrEUdjNLwCpHfWfHNTWDz1tyfPfiEN3K6iMtCZFtokJ3K0EZ-aOkeIw=s662-no?authuser=0"
+                />
+                <h1>Jackalina</h1>
+              </div>
+              <h2>@THAHK</h2>
+            </header>
+            <div class="tweet-body">
+              <p>Hello world!</p>
+            </div>
+            <footer>
+              <p>10 days ago</p>
+              <span>
+                <i class="material-icons"> favorite </i>
+              </span>
+            </footer>
+          </article>
+        </section>
+        <button id="topBtn" title="Go to top">Top</button>
+      </main>
+    </body>
+    </div>
 </html>

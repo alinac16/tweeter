@@ -74,6 +74,6 @@
   display: flex;
   align-items: center;
 }
-.tweet_container:hover {
+.tweet:hover {
   box-shadow: 0 8px 6px -6px #545149;
 }

@@ -4,10 +4,6 @@ form {
   font-family: "Source Sans Pro", sans-serif;
 }
 
-.new-tweet__title {
-  margin-bottom: 0;
-}
-
 .container {
   display: flex;
   flex-direction: column;
@@ -19,7 +15,6 @@ form {
 }
 
 .form-control {
-  display: flex;
   line-height: 2em;
   margin: 0;
   width: 100%;
@@ -75,6 +70,8 @@ button[type="submit"] {
   justify-content: space-between;
   align-items: baseline;
 }
+
+/* error messages */
 
 .error-message {
   background-color: #fce4e4;

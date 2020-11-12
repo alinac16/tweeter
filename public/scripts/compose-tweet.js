@@ -66,8 +66,7 @@ $(document).ready(function () {
     } else {
       submitTweet(formData).then(res => {
         console.log("submit tweet", res);
-        $(".tweet_container").empty();
-        renderTweets(res);
+        renderTweets([res]);
       });
     }
   });
@@ -125,7 +124,8 @@ const renderTweets = function (tweets) {
     $html.prepend(createTweetElement(tweet));
   });
   // takes return value and appens it to the tweets container
-  $(".tweet_container").append($html);
+  console.log($(".tweet_container").html());
+  $(".tweet_container").prepend($html);
 };
 
 const getCurrentTime = function (date) {
